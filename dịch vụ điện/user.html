@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            background: #333;
+            color: #fff;
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            z-index: 1; /* Sidebar should be behind content */
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            z-index: 2; /* Content should be above sidebar */
+        }
+
+        #logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li:hover {
+            background: #555;
+        }
+
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #content h2 {
+            color: #333;
+        }
+
+        #content p {
+            color: #555;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="sidebar">
+
+        <ul id="menu">
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <h2>Chào mừng quý khách </h2>
+        <div id="grid-container"></div>
+    </div>
+    <script>
+        // jQuery code for handling grid content
+        $(document).ready(function () {
+            // Dummy data for the grid
+            var gridData = [
+                { title: "Lượng Tiêu Thụ", content: "<button onclick='getInfo()'>Nhập thông tin</button>" },
+                { title: "Kế Hoạch Tiêu Dùng", content: "Bạn chưa có kế hoạch tiêu dùng" }
+            ];
+
+            // Function to render the grid
+            function renderGrid() {
+                var gridContainer = $("#grid-container");
+                gridContainer.empty(); // Clear previous content
+
+                // Loop through the data and create grid items
+                gridData.forEach(function (item) {
+                    var gridItem = $("<div class='grid-item'>");
+                    gridItem.append("<h3>" + item.title + "</h3>");
+                    gridItem.append("<p>" + item.content + "</p>");
+                    gridContainer.append(gridItem);
+                });
+            }
+
+            // Initial rendering
+            renderGrid();
+        });
+    </script>
+</body>
+
+</html>

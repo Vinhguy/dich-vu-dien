@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Thanh Toán</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            background: #333;
+            color: #fff;
+            height: 100vh;          
+            position: fixed;
+            top: 0;
+            left: 0;
+           
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li:hover {
+            background: #555;
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .checkout-form {        
+            margin: 0 auto;
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar" class="col-xs-2">
+        <ul id="menu">
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+        </ul>
+    </div>
+
+    <div id="content" class="checkout-form container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Trang Thanh Toán</h2>
+                <!-- Nội dung biểu mẫu thanh toán của bạn ở đây -->
+                <form>
+                    <!-- Thêm các trường biểu mẫu cho thanh toán -->
+                    <div class="form-group">
+                        <label for="firstName">Họ</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Nhập họ của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Tên</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Nhập tên của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bankSelect">Chọn Ngân Hàng</label>
+                        <select class="form-control" id="bankSelect">
+                            <option value="bank1">BIDV</option>
+                            <option value="bank2">Techcombank</option>
+                            <option value="bank3">MB Bank</option>
+                            <option value="bank4"></option>
+                            <!-- Thêm nhiều lựa chọn ngân hàng khác nếu cần -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="electricConsumption">Tiêu Thụ Điện (kWh)</label>
+                        <input type="number" class="form-control" id="electricConsumption" placeholder="Nhập tiêu thụ điện">
+                    </div>
+
+                    <div class="payment-methods">
+                        <p>Chọn Phương Thức Thanh Toán:</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard" checked>
+                            <label class="form-check-label" for="creditCard">
+                                Thẻ Tín Dụng
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+                            <label class="form-check-label" for="bankTransfer">
+                                Chuyển Khoản Ngân Hàng
+                            </label>
+                        </div>
+                        <!-- Thêm nhiều phương thức thanh toán khác nếu cần -->
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Hoàn Tất Thanh Toán</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

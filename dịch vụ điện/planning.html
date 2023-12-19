@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lập Kế Hoạch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            background: #333;
+            color: #fff;
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li:hover {
+            background: #555;
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .planning-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar">
+        <ul id="menu">
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+        </ul>
+    </div>
+
+    <div id="content" class="planning-form">
+        <h2>Lập Kế Hoạch Tiêu Dùng</h2>
+        <form id="consumptionForm" onsubmit="submitPlan(event)">
+            <div class="form-group">
+                <label for="consumptionLimit">Đặt Giới Hạn Tiêu Dùng (kWh)</label>
+                <input type="number" class="form-control" id="consumptionLimit" placeholder="Nhập giới hạn tiêu dùng" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Xác Nhận Kế Hoạch</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="planning.js"></script>
+</body>
+
+</html>
