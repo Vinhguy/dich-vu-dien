@@ -16,11 +16,10 @@
         #sidebar {
             background: #333;
             color: #fff;
-            height: 100vh;          
+            height: 100%;          
             position: fixed;
             top: 0;
             left: 0;
-           
         }
 
         #menu {
@@ -54,11 +53,12 @@
 </head>
 
 <body>
-    <div id="sidebar" class="col-xs-2">
+    <div id="sidebar">
         <ul id="menu">
             <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
             <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
             <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='update.html'">Hồ sơ</button></li>      
         </ul>
     </div>
 
@@ -67,7 +67,7 @@
             <div class="col-md-8">
                 <h2>Trang Thanh Toán</h2>
                 <!-- Nội dung biểu mẫu thanh toán của bạn ở đây -->
-                <form>
+                <form id="paymentForm">
                     <!-- Thêm các trường biểu mẫu cho thanh toán -->
                     <div class="form-group">
                         <label for="firstName">Họ</label>
@@ -86,7 +86,7 @@
                             <option value="bank2">Techcombank</option>
                             <option value="bank3">MB Bank</option>
                             <option value="bank4"></option>
-                            <!-- Thêm nhiều lựa chọn ngân hàng khác nếu cần -->
+                            <!-- Thêm các lựa chọn ngân hàng khác nếu cần -->
                         </select>
                     </div>
 
@@ -108,18 +108,59 @@
                             <label class="form-check-label" for="bankTransfer">
                                 Chuyển Khoản Ngân Hàng
                             </label>
+                            <div class="mb-3" id="bankTransferDropdown" style="display: none;">
+                                <label for="bank" class="form-label">Chọn Ngân Hàng</label>
+                                <select class="form-select" id="bank">
+                                    <option selected>Chọn ngân hàng</option>
+                                    <option value="vietcombank">Vietcombank</option>
+                                    <option value="techcombank">Techcombank</option>
+                                    <option value="acb">ACB</option>
+                                    <!-- Thêm các ngân hàng khác nếu cần -->
+                                </select>
+                            </div>
                         </div>
                         <!-- Thêm nhiều phương thức thanh toán khác nếu cần -->
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Hoàn Tất Thanh Toán</button>
+                    <button type="button" class="btn btn-primary" onclick="submitPlan()">Hoàn Tất Thanh Toán</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function submitPlan() {
+            // Lấy giá trị từ các trường biểu mẫu
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var bank = document.getElementById('bankSelect').value;
+            var electricConsumption = document.getElementById('electricConsumption').value;
+            var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            var selectedBank = document.getElementById('bank').value;
+
+            // Hiển thị thông tin (bạn có thể thay đổi cách hiển thị)
+            alert('Họ: ' + firstName +
+                  '\nTên: ' + lastName +
+                  '\nNgân Hàng: ' + bank +
+                  '\nTiêu Thụ Điện: ' + electricConsumption +
+                  '\nPhương Thức Thanh Toán: ' + paymentMethod +
+                  '\nNgân Hàng Chuyển Khoản: ' + selectedBank);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Thêm sự kiện change cho phương thức thanh toán
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(function (el) {
+                el.addEventListener('change', function () {
+                    var bankTransferDropdown = document.getElementById('bankTransferDropdown');
+                    if (el.value === 'bankTransfer') {
+                        bankTransferDropdown.style.display = 'block';
+                    } else {
+                        bankTransferDropdown.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

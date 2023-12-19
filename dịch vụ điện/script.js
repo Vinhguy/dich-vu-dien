@@ -56,30 +56,6 @@ function signup(event) {
 }
 
 
-function deleteAccount() {
-  if (confirm("Are you sure you want to delete your account?")) {
-    currentUser = null;
-    clearUserInfo();
-    alert("Account deleted successfully.");
-  }
-}
-
-function updateUserInfo() {
-  if (currentUser) {
-    document.getElementById("user-name").textContent = `Name: ${currentUser.name}`;
-    document.getElementById("user-address").textContent = `Address: ${currentUser.address}`;
-    document.getElementById("user-contact").textContent = `Contact: ${currentUser.contact}`;
-    document.getElementById("payment-history").textContent = `Payment History: ${currentUser.paymentHistory}`;
-  }
-}
-
-function clearUserInfo() {
-  document.getElementById("user-name").textContent = "";
-  document.getElementById("user-address").textContent = "";
-  document.getElementById("user-contact").textContent = "";
-  document.getElementById("payment-history").textContent = "";
-}
-
 
 function getInfo() {
   // Collecting electric bill data for the last 3 months
@@ -151,6 +127,31 @@ function submitPlan(event) {
 
 function displayPlan(limit) {
     const resultContainer = document.getElementById("result");
-    resultContainer.innerHTML = `<p>Giới Hạn Tiêu Dùng Đã Đặt: ${limit} kWh</p>`;
+    if (limit < 100) {
+        resultContainer.innerHTML = `<p>Giới Hạn Tiêu Dùng Đã Đặt: ${limit} kWh</p>`;
+    } else {
+        resultContainer.innerHTML = `<p>Giới Hạn Tiêu Dùng Đã Đặt: ${limit} kWh<br>Bạn nên tiết kiệm điện hơn !</p>`;
+    }
+}
+
+
+function updateForm() {
+    // Lấy giá trị từ các trường input
+    var name = document.getElementById('name').value;
+    var age = document.getElementById('age').value;
+    var address = document.getElementById('address').value;
+    
+    var gender = document.querySelector('input[name="gender"]:checked');
+    
+    if (gender) {
+        gender = gender.value;
+    }
+
+    // Hiển thị thông tin bằng cách sử dụng alert hoặc cập nhật một phần tử HTML
+    var output = document.getElementById('output');
+    output.innerHTML = '<p><strong>Tên:</strong> ' + name + '</p>' +
+                       '<p><strong>Tuổi:</strong> ' + age + '</p>' +
+                       '<p><strong>Địa chỉ:</strong> ' + address + '</p>' +
+                       '<p><strong>Giới tính:</strong> ' + gender + '</p>';
 }
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập Nhật Thông Tin Cá Nhân</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            background: #333;
+            color: #fff;
+            height: 100vh;          
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu li:hover {
+            background: #555;
+        }
+
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <ul id="menu">
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='update.html'">Hồ sơ</button></li>      
+        </ul>
+    </div>
+
+    <div id="content" class="container mt-5">
+        <h2>Cập Nhật Thông Tin Cá Nhân</h2>
+        <form id="updateForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên</label>
+                <input type="text" class="form-control" id="name" placeholder="Nhập tên của bạn">
+            </div>
+
+            <div class="mb-3">
+                <label for="age" class="form-label">Tuổi</label>
+                <input type="number" class="form-control" id="age" placeholder="Nhập tuổi của bạn">
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Địa Chỉ</label>
+                <select class="form-select" id="address">
+                    <option selected>Chọn địa chỉ</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">TP. Hồ Chí Minh</option>
+                    <option value="3">Đà Nẵng</option>
+                    <!-- Thêm các tùy chọn khác nếu cần -->
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Giới Tính</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">
+                        Nam
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">
+                        Nữ
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="updateForm()">Cập Nhật</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+</html>

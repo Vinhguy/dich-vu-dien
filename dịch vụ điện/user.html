@@ -18,13 +18,11 @@
         #sidebar {
             background: #333;
             color: #fff;
-            height: 100vh;
-            width: 250px;
+            height: 100%;          
             position: fixed;
             top: 0;
             left: 0;
-            padding-top: 20px;
-            z-index: 1; /* Sidebar should be behind content */
+           
         }
 
         #content {
@@ -87,15 +85,15 @@
 
 <body>
     <div id="sidebar">
-
         <ul id="menu">
             <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='user.html'">Thông tin</button></li>
-            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
-            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='payment.html'">Thanh toán</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='planning.html'">Lập kế hoạch</button></li>
+            <li><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='update.html'">Hồ sơ</button></li>      
         </ul>
     </div>
 
-    <div id="content">
+    <div id="content" class="container mt-5">
         <h2>Chào mừng quý khách </h2>
         <div id="grid-container"></div>
     </div>
